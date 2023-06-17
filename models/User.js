@@ -18,7 +18,7 @@ const userSchema = mongoose.Schema(
         moviesToSee: { type: Array },
         moviesSeen: { type: Array },
         favorites: { type: Array },
-        imgUrl: { type: String },
+        avatarUrl: { type: String },
         language: { type: String, default: "fr" },
     },
     {

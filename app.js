@@ -7,6 +7,7 @@ const { errorHandler } = require("./middleware/errorHandler");
 
 const userRoutes = require("./routes/userRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
+const configRoutes = require("./routes/configRoutes");
 
 connectToDb();
 
@@ -26,6 +27,7 @@ app.use((req, res, next) => {
     next();
 });
 
+app.use("/API/config", configRoutes);
 app.use("/API/users", userRoutes);
 app.use("/API/reviews", reviewRoutes);
 

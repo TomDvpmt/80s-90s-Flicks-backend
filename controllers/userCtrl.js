@@ -125,6 +125,8 @@ exports.getOneUser = asyncHandler(async (req, res) => {
             moviesToSee: user.moviesToSee,
             favorites: user.favorites,
             language: user.language,
+            avatarUrl: user.avatarUrl,
+            avatarDeletUrl: user.avatarDeletUrl,
         });
     } catch (error) {
         res.status(404);
@@ -159,7 +161,7 @@ exports.updateUser = asyncHandler(async (req, res) => {
         await User.updateOne({ _id: loggedUserId }, updateData);
         res.status(200).json({
             ...updateData,
-            message: "Informations mises à jour.",
+            message: "Utilisateur mis à jour.",
         });
     } catch (error) {
         res.status(400);
