@@ -226,6 +226,6 @@ exports.deleteUser = asyncHandler(async (req, res) => {
 exports.logout = asyncHandler(async (req, res) => {
     console.log("Loging out.");
     res.status(200)
-        .clearCookie("access_token", { domain: ".onrender.com", path: "/" })
+        .cookie("access_token", "", COOKIE_OPTIONS) // clearCookie not working
         .json({ message: "Utilisateur déconnecté." });
 });
