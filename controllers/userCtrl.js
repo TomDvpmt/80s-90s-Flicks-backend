@@ -57,7 +57,7 @@ exports.login = asyncHandler(async (req, res) => {
 exports.getToken = asyncHandler(async (req, res) => {
     const token = req.cookies.access_token;
     if (!token) {
-        return res.status(400).json({ message: "Token d'accès introuvable." });
+        return res.status(404).json({ message: "Token introuvable." });
     }
     res.status(200).json(token);
 });
