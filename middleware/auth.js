@@ -1,6 +1,7 @@
 const jwt = require("jsonwebtoken");
 
 const auth = (req, res, next) => {
+    console.log("auth");
     try {
         const token = req.cookies.access_token;
         const decodedToken = jwt.verify(token, process.env.TOKEN_SECRET_PHRASE);

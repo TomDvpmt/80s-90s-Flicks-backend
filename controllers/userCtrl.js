@@ -224,6 +224,7 @@ exports.deleteUser = asyncHandler(async (req, res) => {
  */
 
 exports.logout = asyncHandler(async (req, res) => {
+    console.log("Loging out.");
     res.status(200)
         .clearCookie("access_token")
         .json({ message: "Utilisateur déconnecté." });

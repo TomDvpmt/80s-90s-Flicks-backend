@@ -17,6 +17,6 @@ router.get("/profile", auth, getOneUser);
 router.post("/", createUser);
 router.put("/:id", auth, updateUser);
 router.delete("/:id", auth, deleteUser);
-router.get("/logout", logout);
+router.get("/logout", auth, logout);
 
 module.exports = router;
