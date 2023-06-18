@@ -44,6 +44,25 @@ exports.login = asyncHandler(async (req, res) => {
 });
 
 /**
+ * Get the access token
+ *
+ * @async
+ * @route GET /API/users/token
+ * @access Public
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {Promise}
+ */
+
+exports.getToken = asyncHandler(async (req, res) => {
+    const token = req.cookies.access_token;
+    if (!token) {
+        return res.status(400).json({ message: "Token d'accès introuvable." });
+    }
+    res.status(200).json(token);
+});
+
+/**
  * Create user.
  *
  * @async
