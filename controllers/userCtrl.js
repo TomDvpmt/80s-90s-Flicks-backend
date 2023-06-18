@@ -1,8 +1,8 @@
 const User = require("../models/User");
-const jwt = require("jsonwebtoken");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const { createToken } = require("../utils/user");
+const COOKIE_OPTIONS = require("../config/cookie");
 
 /**
  * Authenticate a user.
@@ -32,7 +32,7 @@ exports.login = asyncHandler(async (req, res) => {
 
     const token = createToken(user);
 
-    res.status(200).json({
+    res.cookie("access_token", token, COOKIE_OPTIONS).status(200).json({
         message: "Utilisateur connecté.",
         _id: user.id,
         token: token,
@@ -87,7 +87,7 @@ exports.createUser = asyncHandler(async (req, res) => {
     }
     const token = createToken(user);
 
-    res.status(201).json({
+    res.cookie("access_token", token, COOKIE_OPTIONS).status(201).json({
         message: "Utilisateur créé.",
         _id: user.id,
         token: token,
@@ -102,7 +102,7 @@ exports.createUser = asyncHandler(async (req, res) => {
  * Get user info.
  *
  * @async
- * @route GET /API/users/:id
+ * @route GET /API/users/profile
  * @access Private
  * @param {Request} req
  * @param {Response} res
@@ -191,4 +191,21 @@ exports.deleteUser = asyncHandler(async (req, res) => {
 
     await User.deleteOne({ _id: userId });
     res.status(200).json({ message: "Utilisateur supprimé." });
+});
+
+/**
+ * Logout user
+ *
+ * @async
+ * @route GET /API/users/logout
+ * @access Public
+ * @param {Request} req
+ * @param {Response} res
+ * @returns {Promise}
+ */
+
+exports.logout = asyncHandler(async (req, res) => {
+    res.status(200)
+        .clearCookie("access_token")
+        .json({ message: "Utilisateur déconnecté." });
 });
