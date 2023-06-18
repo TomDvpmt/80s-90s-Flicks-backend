@@ -5,4 +5,4 @@ const COOKIE_OPTIONS = {
     sameSite: "none",
 };
 
-module.exports = COOKIE_OPTIONS;
+module.exports = { COOKIE_OPTIONS };

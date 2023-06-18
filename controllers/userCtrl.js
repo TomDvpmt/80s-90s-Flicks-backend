@@ -2,7 +2,7 @@ const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const asyncHandler = require("express-async-handler");
 const { createToken } = require("../utils/user");
-const COOKIE_OPTIONS = require("../config/cookie");
+const { COOKIE_OPTIONS } = require("../config/cookie");
 
 /**
  * Authenticate a user.
@@ -226,6 +226,6 @@ exports.deleteUser = asyncHandler(async (req, res) => {
 exports.logout = asyncHandler(async (req, res) => {
     console.log("Loging out.");
     res.status(200)
-        .clearCookie("access_token")
+        .clearCookie("access_token", { domain: ".onrender.com", path: "/" })
         .json({ message: "Utilisateur déconnecté." });
 });
