@@ -1,6 +1,6 @@
 const WHITE_LIST = [
     "http://localhost:4200",
-    "https://flicks80s90s.onrender.com", // important : no "/" at the end of the URL
+    ".onrender.com", // important : no "/" at the end of the URL
 ];
 
 const corsOptions = {
