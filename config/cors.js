@@ -1,4 +1,7 @@
-const WHITE_LIST = ["http://localhost:4200", ".onrender.com"];
+const WHITE_LIST = [
+    "http://localhost:4200",
+    "https://flicks80s90s.onrender.com",
+];
 
 const corsOptions = {
     origin: (origin, callback) => {
