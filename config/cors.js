@@ -1,4 +1,4 @@
-const WHITE_LIST = ["http://localhost:4200", "https://flixx80s90s.netlify.app"];
+const WHITE_LIST = ["http://localhost:4200", "https://flixx80s90s.netlify.app"]; // important : no "/" at the end
 
 const corsOptions = {
     origin: (origin, callback) => {
