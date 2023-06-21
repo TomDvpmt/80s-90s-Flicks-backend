@@ -205,7 +205,7 @@ exports.deleteUser = asyncHandler(async (req, res) => {
 
     if (paramId !== userId) {
         res.status(401);
-        throw new Error("Non autorisé");
+        throw new Error("Non autorisé.");
     }
 
     await User.deleteOne({ _id: userId });
