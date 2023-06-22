@@ -115,15 +115,24 @@ exports.createUser = asyncHandler(async (req, res) => {
     }
     const token = createToken(user);
 
-    res.cookie("access_token", token, COOKIE_OPTIONS).status(201).json({
-        message: "Utilisateur créé.",
-        _id: user.id,
-        token: token,
-        username: user.username,
-        email: user.email,
-        firstName: user.firstName,
-        lastName: user.lastName,
-    });
+    res.cookie("access_token", token, COOKIE_OPTIONS)
+        .status(201)
+        .json({
+            message: "Utilisateur créé.",
+            user: {
+                id: user._id,
+                token: token,
+                avatarUrl: user.avatarUrl,
+                username: user.username,
+                email: user.email,
+                firstName: user.firstName,
+                lastName: user.lastName,
+                moviesSeen: user.moviesSeen,
+                moviesToSee: user.moviesToSee,
+                favorites: user.favorites,
+                language: user.language,
+            },
+        });
 });
 
 /**
