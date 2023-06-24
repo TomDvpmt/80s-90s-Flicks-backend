@@ -1,5 +1,6 @@
 const http = require("http");
 const app = require("./app");
+const connectToDb = require("./config/database");
 
 const normalizePort = (value) => {
     const port = parseInt(value, 10);
@@ -48,4 +49,6 @@ server.on("listening", () => {
     console.log("Listening on " + bind);
 });
 
-server.listen(port);
+connectToDb().then(() => {
+    server.listen(port);
+});

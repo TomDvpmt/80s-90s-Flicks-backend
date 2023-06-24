@@ -5,14 +5,14 @@ const cors = require("cors");
 const corsOptions = require("./config/cors");
 const app = express();
 const cookieParser = require("cookie-parser");
-const connectToDb = require("./config/database");
+// const connectToDb = require("./config/database");
 const { errorHandler } = require("./middleware/errorHandler");
 
 const userRoutes = require("./routes/userRoutes");
 const reviewRoutes = require("./routes/reviewRoutes");
 const configRoutes = require("./routes/configRoutes");
 
-connectToDb();
+// connectToDb();
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
